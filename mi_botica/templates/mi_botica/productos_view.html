@@ -1,0 +1,74 @@
+{% extends "mi_botica/base.html" %}
+{% block title %}
+<title>Productos</title>
+{% endblock %}
+
+{% block content %}
+<section class="features11 cid-rZ2CGk0A6q" id="features11-1n">
+    <div class="container">   
+        <div class="col-md-12">
+            <div class="media-container-row">
+                <div class="mbr-figure m-auto" style="width: 35%;">
+                    <img src="../static/assets/images/logo-bp-628x274.png" alt="Mobirise" title="">
+                </div>
+                <div class=" align-left aside-content">
+                    <h2 class="mbr-title pt-2 mbr-fonts-style display-2">Producto:</h2>
+                    <div class="mbr-section-text">    
+                    </div>
+                    <div class="block-content">
+                        <div class="card p-3 pr-3">
+                            <div class="media">
+                                     
+                                <div class="media-body">
+                                    <h3 class="card-title mbr-fonts-style display-7"></h3>
+                                </div>
+                            </div>                
+
+                            <div class="card-box">
+                                <h4 class="card-title mbr-fonts-style display-5">
+                                   {{producto.descripcion}}
+                                </h4>
+                                <br>
+                                <h4 class="card-title mbr-fonts-style display-7">Presentaciones</h4>
+                                <hr>
+                                {% for c in presentaciones%}
+                                <form action='../add_carrito/' method="post" enctype="multipart/form-data" >
+                                    <div class="row">
+                                    {% csrf_token %}
+                                    <div class="col-3 col-md-3">
+                                        {{c.nombre}}: <br>  S/. {{c.precio}}
+                                    </div>
+                                    <div class="col-3 col-md-3">
+                                            <input type="number" name="cantidad" class="form-control display-7" placeholder="cantidad" required>
+                                        </div>
+                                        <div class="col-6 col-md-6">
+                                            <input type="hidden" name="producto" value={{producto.idproductos}}>
+                                            <input type="hidden" name="presentacion" value={{c.idpresentacion}}>
+                                            <button class="btn btn-info display-4" type="submit">Añadir</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>          
+</section>
+
+<section class="mbr-section content8 cid-rZ2DmZUDo4" id="content8-1o">
+    <div class="container">
+        <div class="media-container-row title">
+            <div class="col-12 col-md-8">
+                <div class="mbr-section-btn align-center"><a class="btn btn-info display-4" href="../productos">VOLVER A PRODUCTOS</a>
+                    <a class="btn btn-secondary display-4" href="../pre_confirmacion">FINALIZAR COMPRA</a></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+

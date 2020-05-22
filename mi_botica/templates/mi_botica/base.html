@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% load staticfiles %}
+  <!-- Site made with Mobirise Website Builder v4.10.5, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.10.5, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="../static/assets/images/logo-bp-nav-122x54.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  {% block title %}
+  {% endblock %}
+  <link rel="stylesheet" href="../static/assets/web/../static/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="../static/assets/web/../static/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="../static/assets/tether/tether.min.css">
+  <link rel="stylesheet" href="../static/assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="../static/assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="../static/assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="../static/assets/formstyler/jquery.formstyler.css">
+  <link rel="stylesheet" href="../static/assets/formstyler/jquery.formstyler.theme.css">
+  <link rel="stylesheet" href="../static/assets/datepicker/jquery.datetimepicker.min.css">
+  <link rel="stylesheet" href="../static/assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="../static/assets/theme/css/style.css">
+  <link rel="stylesheet" href="../static/assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+
+</head>
+<body>
+  <section class="extMenu4 menu cid-rZ2ucFrMUS" once="menu" id="extMenu4-1">
+    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+        <div class="navbar-brand">
+            <span class="navbar-logo">
+                <a href="https://mobirise.com">
+                    <img src="/../static/assets/images/logo-bp-nav-122x54.png" alt="Mobirise" title="" style="height: 3.8rem;">
+                </a>
+            </span>
+            <span class="navbar-caption-wrap"><a class="navbar-caption text-info display-2" href="https://mobirise.com"></a></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item">
+                    <a class="nav-link link text-info display-4" href="../">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-info display-4" href="../productos">Productos</a>
+                </li><li class="nav-item"><a class="nav-link link text-info display-4" href="../nosotros">Sobre nosotros</a></li>
+                <li class="nav-item">
+                    <a class="nav-link link text-info display-4" href="../delivery">Delivery</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-info display-4" href="../#extForm25-6">Contacto</a>
+                </li>
+              </ul>
+            <div class="navbar-buttons mbr-section-btn">
+              <a class="btn btn-sm  btn-info display-4" href="../login">
+                {% if user.is_authenticated %}
+                Mi carrito ( {% if request.session.cantidad %}{{request.session.cantidad}} {% else %} 0 {% endif %} )
+                {% else %}
+                Ingresar
+                {% endif %}
+              </a>
+            </div>
+      </div>
+    </nav>
+</section>
+<section class="mbr-section content8 cid-rZ2DQPnSIg" id="content8-1q">
+    <div class="container">
+        <div class="media-container-row title">
+            <div class="col-12 col-md-8">
+                <div class="mbr-section-btn align-center">
+                    <form action='../productos/' method="get" enctype="multipart/form-data">
+                      <div class="row">
+                        <div class="col-7 col-md-7">
+                          <input type="text" name="buscador" class="form-control display-7" placeholder="Buscar productos">
+                        </div>
+                        <div class="col-5 col-md-5" style="vertical-align: center;">
+                          <button type="submit" class="btn btn-info display-4">Buscar</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% block content%}
+{% endblock %}
+
+<section once="footers" class="cid-rZ2wkA7zE0" id="footer6-5">
+
+    
+
+    
+
+    <div class="container">
+        <div class="media-container-row align-center mbr-white">
+            <div class="col-12">
+                <p class="mbr-text mb-0 mbr-fonts-style display-7">
+                    © Botica Providencia - Desarrollado por <a href="https://www.sharebusiness.pe" class="text-secondary">Sharebusiness.pe</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="../static/assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="../static/assets/popper/popper.min.js"></script>
+  <script src="../static/assets/tether/tether.min.js"></script>
+  <script src="../static/assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../static/assets/dropdown/js/nav-dropdown.js"></script>
+  <script src="../static/assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="../static/assets/touchswipe/jquery.touch-swipe.min.js"></script>
+  <script src="../static/assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="../static/assets/formstyler/jquery.formstyler.js"></script>
+  <script src="../static/assets/formstyler/jquery.formstyler.min.js"></script>
+  <script src="../static/assets/datepicker/jquery.datetimepicker.full.js"></script>
+  <script src="../static/assets/theme/js/script.js"></script>
+  <script src="../static/assets/formoid/formoid.min.js"></script>
+  
+  
+
+</body>
+</html>
+
+
+
+

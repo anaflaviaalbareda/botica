@@ -1,0 +1,187 @@
+{% extends "mi_botica/base.html" %}
+{% block title %}
+<title>Productos</title>
+{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<section class="mbr-section content4 cid-rZ2AKaIdd6" id="content4-19" style="padding-top: 60px">
+    <div class="container">
+        <div class="media-container-row">
+            <div class="title col-12 col-md-8">
+                <h2 class="align-center pb-3 mbr-fonts-style display-1"><strong>Bienvenido {{cliente.nombre}}</strong></h2>
+                <h3 class="mbr-section-subtitle align-center mbr-light mbr-fonts-style display-5"> Mi Botica Providencia</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="mbr-section article content9 cid-rZ2AKbcOY7" id="content9-1a">
+    <div class="container">
+        <div class="inner-container" style="width: 100%;">
+            <hr class="line" style="width: 10%;">
+            	<div class="section-text align-left mbr-fonts-style display-5">
+            		<div class="row">
+            			<div class="col-3 col-mb-12">
+	                    	<strong> Nombre: </strong> 
+	                    </div> 
+	                    <div class="col-9 col-mb-12">
+	                    	{{cliente.nombre}}
+	                	</div>
+	                </div>
+	                <div class="row">
+	                    <div class="col-3 col-mb-12">
+	                    	<strong> Apellido: </strong> 
+	                    </div> 
+	                    <div class="col-9 col-mb-12">
+	                    	{{cliente.apellido}}
+	                	</div>
+	                </div>
+	                <div class="row">
+	                    <div class="col-3 col-mb-12">
+	                    	<strong> Telefono: </strong> 
+	                    </div> 
+	                    <div class="col-9 col-mb-12">
+	                    	{{cliente.telefono}}
+	                	</div>
+	                </div>
+	                <div class="row">
+	                    <div class="col-3 col-mb-12">
+	                    	<strong> Email: </strong> 
+	                    </div> 
+	                    <div class="col-9 col-mb-12">
+	                    	{{cliente.email}}
+	                	</div>
+	                </div>
+	                <br>
+	                <div class="row" style="width: 60%">
+	                   	<a class="btn btn-info display-4" href="../change_pass">Cambiar contraseña</a>
+                        <a class="btn btn-secondary display-4" href="../log_out">Cerrar Session</a>
+	            </div>
+            <hr class="line" style="width: 10%;">
+                <div class="section-text align-left mbr-fonts-style display-5">
+                    {% if productos_en_carrito %}
+                    <div class="row">
+                        <div class="col-12 col-mb-12">
+                            Productos en el carrito
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-3 col-mb-12">
+                            Producto
+                        </div>
+                        <div class="col-2 col-mb-12" style="text-align: center">
+                            Presentacion
+                        </div>
+                        <div class="col-2 col-mb-12" style="text-align: center">
+                            Cantidad
+                        </div>
+                        <div class="col-2 col-mb-12" style="text-align: center">
+                            Subtotal
+                        </div>
+                        <div class="col-3 col-mb-12">
+                            Eliminar producto
+                        </div>
+                    </div>
+                    <hr>
+                    {% for c in productos_en_carrito %}
+                    <div class="row">
+                        <div class="col-3 col-mb-12">
+                            {{c.producto.descripcion}}
+                        </div> 
+                        <div class="col-2 col-mb-12" style="text-align: center">
+                            {{c.presentacion.nombre}} 
+                        </div>
+                        <div class="col-2 col-mb-12" style="text-align: center">
+                            {{c.cantidad}} 
+                        </div>
+                        <div class="col-2 col-mb-12" style="text-align: center">
+                            {{c.subtotal}}
+                        </div>
+                        <div class="col-3 col-mb-12">
+                            <form action='../delete_carrito/' method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <input type="hidden" name="eliminar" value={{c.id_has}}>
+                                <button class="btn btn-info display-4" type="submit">Eliminar</button>
+                            </form>
+                        </div>
+                    </div>
+                    <hr>
+                    {% endfor %}
+                    <div class="row">
+                        <div class="col-12 col-mb-12">
+                            Total de la compra: S./ {{carrito.total}}
+                        </div>
+                    </div>
+                    {% endif %}   
+                </div>
+        </div>
+    </div>
+</section>
+
+<section class="mbr-section content8 cid-rZ2AKbNkeq" id="content8-1b" style="padding-top: 0px">
+    <div class="container">
+        <div class="media-container-row title">
+            <div class="col-12 col-md-8">
+                <div class="mbr-section-btn align-center">
+                	<a class="btn btn-secondary display-4" href="../productos">+ PRODUCTOS</a>
+                    {% if productos_en_carrito %}
+                    <a class="btn btn-info display-4" href="../pre_confirmacion">Finalizar compra</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% else %}
+
+<section class="mbr-section article content12 cid-rZ2zE9VcKW" id="content12-y">
+    <div class="container">
+        <div class="media-container-row">
+            <div class="mbr-text counter-container col-12 col-md-8 mbr-fonts-style display-7">
+            	<h2 class="align-center pb-3 mbr-fonts-style display-1"><strong>Ingresa a tu cuenta</strong></h2>
+            	<h3 class="mbr-section-subtitle align-center mbr-fonts-style display-5">Ingresa con tu email y contraseña</h3>
+            	<h3 class="mbr-section-subtitle align-center mbr-fonts-style display-5">{{alerta}}</h3>
+            	<br>
+                <form action='../login/' method="post" enctype="multipart/form-data">
+					{% csrf_token %}
+					<div class="dragArea form-row">
+						<div class="col-lg-12 col-md-12 col-sm-12 form-group">
+                            <span class="mbr-iconfont mobi-mbri-letter mobi-mbri"></span>
+                            <input type="text" name="email" placeholder="Email" class="form-control display-7">
+                        </div>
+						<div class="col-lg-12 col-md-12 col-sm-12 form-group">
+                            <span class="mbr-iconfont mobi-mbri-letter mobi-mbri"></span>
+                            <input type="password" name="password" placeholder="Contraseña" class="form-control display-7">
+                        </div>
+                		<button type="submit" class="btn btn-info display-4">INGRESAR</button>
+                	</div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="mbr-section content8 cid-rZ2AulOfqt" id="content8-17" style="padding-top: 20px">
+    <div class="container">
+        <div class="media-container-row title">
+            <div class="col-12 col-md-8">
+                <div class="mbr-section-btn align-center">
+                	<a class="btn btn-secondary display-4" href="../forgot">OLVIDE MI CONTRASEÑA</a>
+                    <a class="btn btn-info display-4" href="../add_user">CREAR NUEVA CUENTA</a></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+{% endif %}
+
+
+
+
+
+{% endblock %}
